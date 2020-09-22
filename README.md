@@ -38,14 +38,11 @@
 
 ## Introduction
 
-The Vulkan Samples is collection of resources to help you develop optimized Vulkan applications.
-
-If you are new to Vulkan the [API samples](samples/api) are the right place to start.
-Additionally you may find the following links useful:
- - [learnopengl](https://learnopengl.com)
-
- [Performance samples](samples/performance) show the recommended best practice together with real-time profiling information.
- They are more advanced but also contain a detailed [tutorial](#tutorials) with more in-detail explanations.
+这是我学习OpenGL的记录，也是对自己的一个督促，另外也方便本地系统出问题后可以快速恢复环境。
+代码并不是原创，来自相关的网站，详细的在最后的参考中详细一一罗列，最主要的代码来自[learnopengl](https://learnopengl.com)。
+我是在Ubuntu 20的上配置OpenGL环境调试成功的，过程中可能对参考代码进行修改。并会不断的更新Makefile。
+后期可能也会基于理解深入，基于自己的需求，写出自己的代码。
+(目前这个README文件是我copy的一个现成的README文件，后续慢慢更改)
 
 ### Goals
 - Create a collection of resources that demonstrate best-practice recommendations in Vulkan
@@ -53,9 +50,11 @@ Additionally you may find the following links useful:
 - Create a framework that can be used as reference material and also as a sandbox for advanced experimentation with Vulkan
 
 ## Tutorials
-- **Project Hierarchy**  
+- **Project Hierarchy**
+
   - [Directory Tree](./docs/)
-    OpenGL/
+  
+    OpenGL
     ├── learnOpenGL
     │   ├── Makefile
     │   └── src
@@ -78,6 +77,7 @@ Additionally you may find the following links useful:
         │   └── libglfw3.a
         └── src
             └── glad.c
+
 
 - **Envirenment Setup**
   - [Controls](./docs/misc.md#controls)
