@@ -17,9 +17,7 @@
 -
 -->
 
-# Vulkan Samples <!-- omit in toc -->
-
-![Vulkan Samples banner](banner.jpg)
+# OpenGL Learning Step by Step <!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 
