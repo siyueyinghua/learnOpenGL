@@ -3,6 +3,7 @@
 *.out
 *.pyc
 *.diff
+*.log
 .idea
 .zip
 build/
