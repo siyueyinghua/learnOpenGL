@@ -4,4 +4,6 @@
 *.pyc
 *.diff
 .idea
+.zip
 build/
+lib/

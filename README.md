@@ -109,6 +109,14 @@
   - [The makefile](./Makefile)
 
 
+    3)其他第三方库（使用/usr/local/lib来存放库文件）
+    对于需要使用的其他第三方库，，
+    3.1 按照其方法编译(比如使用Cmake等工具);
+    3.2 把头文件拷贝到inc目录下;
+    3.3 把静态文件.a或者动态文件.so拷贝到目录/usr/local/lib,在文件/etc/ld.so.conf中加入目录/usr/local/lib(通常已经都有这个目录了),并调用命令ldconfig刷新;
+    3.4 在makefile中的LDFLAGS中加上参数 -llibname;
+
+
 ## Setup
 
 Clone the repo with submodules using the following command:

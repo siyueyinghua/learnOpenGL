@@ -6,12 +6,11 @@ vpath %.h ./inc:../thirdParty/inc
 # compile and link parameter 
 CC := gcc 
 CXX := g++ 
-CFLAGS := 
+CFLAGS :=
 CXXFLAGS:= -std=c++17
-#LDFLAGS := -L../lib/libShared.so -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lXxf86vm -lXinerama -lXcursor
-LDFLAGS := -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lXxf86vm -lXinerama -lXcursor
-#LIBS := ../lib/static.a ../lib/libShared.so
-LIBS := ../thirdParty/lib/libglfw3.a
+LDFLAGS := -lglfw3 -lassimp -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lXxf86vm -lXinerama -lXcursor
+#LIBS := ../thirdParty/lib/libglfw3.a ../thirdParty/lib/libassimp.so
+LIBS :=
 DEFINES := 
 INCLUDE := -I./inc -I../thirdParty/inc
 INC = -I./inc -I../thirdParty/inc
@@ -49,7 +48,42 @@ TARGET := camera_mouse_zoom
 TGT_ALL += $(TARGET).out
 TARGET := camera_class
 TGT_ALL += $(TARGET).out
-
+TARGET := colors
+TGT_ALL += $(TARGET).out
+TARGET := basic_lighting_diffuse
+TGT_ALL += $(TARGET).out
+TARGET := basic_lighting_specular
+TGT_ALL += $(TARGET).out
+TARGET := basic_lighting_exercise2
+TGT_ALL += $(TARGET).out
+TARGET := basic_lighting_exercise1
+TGT_ALL += $(TARGET).out
+TARGET := materials
+TGT_ALL += $(TARGET).out
+TARGET := lighting_maps_diffuse
+TGT_ALL += $(TARGET).out
+TARGET := lighting_maps_specular
+TGT_ALL += $(TARGET).out
+TARGET := light_casters_directional
+TGT_ALL += $(TARGET).out
+TARGET := light_casters_point
+TGT_ALL += $(TARGET).out
+TARGET := light_casters_spot
+TGT_ALL += $(TARGET).out
+TARGET := light_casters_spot_soft
+TGT_ALL += $(TARGET).out
+TARGET := multiple_lights
+TGT_ALL += $(TARGET).out
+TARGET := multiple_lights_exercise1
+TGT_ALL += $(TARGET).out
+TARGET := model_loading
+TGT_ALL += $(TARGET).out
+TARGET := model_loading_light
+TGT_ALL += $(TARGET).out
+TARGET := model_loading_multi_light
+TGT_ALL += $(TARGET).out
+TARGET := model_loading_multi_light_normal
+TGT_ALL += $(TARGET).out
 
 # link 
 $(TARGET).out: $(TARGET).o glad.o

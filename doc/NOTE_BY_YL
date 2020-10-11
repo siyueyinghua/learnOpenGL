@@ -1,0 +1,11 @@
+[库文件配置方式]
+动态库的搜索路径搜索的先后顺序是： 
+1.编译目标代码时指定的动态库搜索路径;
+2.环境变量LD_LIBRARY_PATH指定的动态库搜索路径； 
+3.配置文件/etc/ld.so.conf中指定的动态库搜索路径(更改后需要调用命令ldconfig刷新ld.so.cache)；
+4.默认的动态库搜索路径/lib,/usr/lib。
+
+参考：
+1.https://www.cnblogs.com/Recan/p/6012305.html
+2.https://blog.csdn.net/dbzhang800/article/details/6918413
+3.https://www.cnblogs.com/Recan/p/6012248.html
