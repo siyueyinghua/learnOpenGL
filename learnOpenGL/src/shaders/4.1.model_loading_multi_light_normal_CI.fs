@@ -79,6 +79,7 @@ void main()
     result += CalcPointLight(TangentPointLight, TangentNormal, TangentFragPos, TangentViewDir);
     // phase 3: spot light
     result += CalcSpotLight(TangentSpotLight, TangentNormal, TangentFragPos, TangentViewDir);
+    result = vec3(1.0f, 0.0f, 0.0f);
     
     FragColor = vec4(result, 1.0);
 }

@@ -20,11 +20,11 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 
 // settings
-const unsigned int SCR_WIDTH = 1920;
-const unsigned int SCR_HEIGHT = 1080;
+const unsigned int SCR_WIDTH = 960;
+const unsigned int SCR_HEIGHT = 540;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 3.0f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -84,11 +84,11 @@ int main()
 
     // build and compile shaders
     // -------------------------
-    Shader ourShader("./src/shaders/4.model_loading_multi_light_normal.vs", "./src/shaders/4.model_loading_multi_light_normal.fs");
+    Shader ourShader("./src/shaders/4.1.model_loading_multi_light_normal_CI.vs", "./src/shaders/4.1.model_loading_multi_light_normal_CI.fs");
 
     // load models
     // -----------
-    Model ourModel("../resources/objects/backpack/backpack.obj");
+    Model ourModel("../resources/objects/ChryslerImperial/ChryslerImperial1933.glb");
 
     
     // draw in wireframe

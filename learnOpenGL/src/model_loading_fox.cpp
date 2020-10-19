@@ -2,11 +2,8 @@
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <glm/glm.hpp>
-#include <glm/matrix.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
 
 #include <shader.h>
 #include <camera.h>
@@ -20,8 +17,8 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 
 // settings
-const unsigned int SCR_WIDTH = 1920;
-const unsigned int SCR_HEIGHT = 1080;
+const unsigned int SCR_WIDTH = 960;
+const unsigned int SCR_HEIGHT = 540;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -32,10 +29,6 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
-
-// lighting
-glm::vec3 pointLightPos(1.2f, 1.0f, 2.0f);
-
 
 int main()
 {
@@ -84,11 +77,11 @@ int main()
 
     // build and compile shaders
     // -------------------------
-    Shader ourShader("./src/shaders/4.model_loading_multi_light_normal.vs", "./src/shaders/4.model_loading_multi_light_normal.fs");
+    Shader ourShader("./src/shaders/1.model_loading.vs", "./src/shaders/1.model_loading.fs");
 
     // load models
     // -----------
-    Model ourModel("../resources/objects/backpack/backpack.obj");
+    Model ourModel("../resources/objects/SplashFox/Splash_Fox.obj");
 
     
     // draw in wireframe
@@ -116,36 +109,6 @@ int main()
         // don't forget to enable shader before setting uniforms
         ourShader.use();
 
-        // material properties and viewPos
-        ourShader.setVec3("viewPos", camera.Position);
-        ourShader.setFloat("material[0].shininess", 32.0f);
-
-        // light properties
-        // directional light
-        ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-        ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-        ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-        ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-        // point light
-        ourShader.setVec3("pointLight.position", pointLightPos);
-        ourShader.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
-        ourShader.setVec3("pointLight.diffuse", 0.8f, 0.8f, 0.8f);
-        ourShader.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
-        ourShader.setFloat("pointLight.constant", 1.0f);
-        ourShader.setFloat("pointLight.linear", 0.09);
-        ourShader.setFloat("pointLight.quadratic", 0.032);
-        // spotLight
-        ourShader.setVec3("spotLight.position", camera.Position);
-        ourShader.setVec3("spotLight.direction", camera.Front);
-        ourShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-        ourShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-        ourShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-        ourShader.setFloat("spotLight.constant", 1.0f);
-        ourShader.setFloat("spotLight.linear", 0.09);
-        ourShader.setFloat("spotLight.quadratic", 0.032);
-        ourShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-        ourShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
-
         // view/projection transformations
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
@@ -154,13 +117,9 @@ int main()
 
         // render the loaded model
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f)); // translate it down so it's at the center of the scene
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         ourShader.setMat4("model", model);
-        // fixme: why cal and send normalMatrix here doesn't work
-        //-- glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(model)));
-        //-- std::cout << glm::to_string(normalMatrix) << std::endl;
-        //-- ourShader.setMat3("model", normalMatrix);
         ourModel.Draw(ourShader);
 
 
