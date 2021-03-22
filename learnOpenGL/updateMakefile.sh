@@ -42,6 +42,7 @@ do
     echo "TGT_ALL += \$(${TGT_name}).out" >> "${make_file}"
 done
 #declare -p TGT_arr
+echo "TARGET := ${tgt}" >> "${make_file}"
 
 echo '' >> "${make_file}"
 echo '# link' >> "${make_file}"
