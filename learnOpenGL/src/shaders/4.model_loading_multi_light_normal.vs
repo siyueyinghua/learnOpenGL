@@ -56,7 +56,8 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 // fixme: why cal and send normalMatrix here doesn't work
-//-- uniform mat3 normalMatrix;
+// 2021-03-23: Because the name is wrong, should normalMatrix,not model
+uniform mat3 normalMatrix;
 
 uniform vec3 viewPos;
 uniform DirLight dirLight;
@@ -74,7 +75,7 @@ void main()
 
     // Best method, guarantee T & B & N being perpendicular to each other,
     // by doing the Gram-Schmidt process even if normalMatrix is not a orthogonal matrix.
-    mat3 normalMatrix = transpose(inverse(mat3(model)));
+    //-- mat3 normalMatrix = transpose(inverse(mat3(model)));
     vec3 T = normalize(normalMatrix * aTangent);
     vec3 N = normalize(normalMatrix * aNormal);
     T = normalize(T - dot(T, N) * N);

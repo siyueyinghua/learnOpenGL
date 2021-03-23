@@ -16,12 +16,12 @@
 //----------------------
 //  offscreen switch  //
 //----------------------
-#ifndef OFF_SCREEN
-#define OFF_SCREEN 1
-#ifndef FFMPE_G
-#define FFMPEG 1
-#endif
-#endif
+//--#ifndef OFF_SCREEN
+//--#define OFF_SCREEN 1
+//--#ifndef FFMPE_G
+//--#define FFMPEG 1
+//--#endif
+//--#endif
 
 #if FFMPEG
 #include <ffmpeg_encode.h>
@@ -55,7 +55,7 @@ const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.5f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -248,12 +248,19 @@ int main()
         // render the loaded model
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));	// it's a bit too big for our scene, so scale it down
+#define RATOTE_START_TIME 6
+        if((float)glfwGetTime()>RATOTE_START_TIME)
+        {
+            float rotate_angle = ((float)glfwGetTime()-RATOTE_START_TIME)*0.05;
+            model = glm::rotate(model, -rotate_angle, glm::vec3(0.0f, 1.0f, 0.0f));
+        }
+        //-- std::cout << ": glfwGetTime(): " << (float)glfwGetTime() << std::endl;
         ourShader.setMat4("model", model);
         // fixme: why cal and send normalMatrix here doesn't work
-        //-- glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(model)));
-        //-- std::cout << glm::to_string(normalMatrix) << std::endl;
-        //-- ourShader.setMat3("model", normalMatrix);
+        // 2021-03-23: Because the name is wrong, should normalMatrix,not model
+        glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(model)));
+        ourShader.setMat3("normalMatrix", normalMatrix);
 
 #if OFF_SCREEN
         // bind to framebuffer and draw scene as we normally would to color texture 

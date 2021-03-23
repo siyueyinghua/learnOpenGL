@@ -158,9 +158,9 @@ int main()
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         ourShader.setMat4("model", model);
         // fixme: why cal and send normalMatrix here doesn't work
-        //-- glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(model)));
-        //-- std::cout << glm::to_string(normalMatrix) << std::endl;
-        //-- ourShader.setMat3("model", normalMatrix);
+        // 2021-03-23: Because the name is wrong, should normalMatrix,not model
+        glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(model)));
+        ourShader.setMat3("normalMatrix", normalMatrix);
         ourModel.Draw(ourShader);
 
 

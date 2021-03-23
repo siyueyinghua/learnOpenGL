@@ -11,12 +11,12 @@
 //----------------------
 //  offscreen switch  //
 //----------------------
-#ifndef OFF_SCREEN
-#define OFF_SCREEN 1
-#ifndef FFMPE_G
-#define FFMPEG 1
-#endif
-#endif
+//-- #ifndef OFF_SCREEN
+//-- #define OFF_SCREEN 1
+//-- #ifndef FFMPE_G
+//-- #define FFMPEG 1
+//-- #endif
+//-- #endif
 
 #if FFMPEG
 #include <ffmpeg_encode.h>
