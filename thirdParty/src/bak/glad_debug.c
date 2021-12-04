@@ -128,7 +128,6 @@ int open_gl(void) {
     unsigned int index = 0;
     for(index = 0; index < (sizeof(NAMES) / sizeof(NAMES[0])); index++) {
         libGL = dlopen(NAMES[index], RTLD_NOW | RTLD_GLOBAL);
-    fprintf(stdout, "Debug: call dlsym %s \n", NAMES[0]);
 
         if(libGL != NULL) {
 #if defined(__APPLE__) || defined(__HAIKU__)
@@ -136,7 +135,6 @@ int open_gl(void) {
 #else
             gladGetProcAddressPtr = (PFNGLXGETPROCADDRESSPROC_PRIVATE)dlsym(libGL,
                 "glXGetProcAddressARB");
-            fprintf(stdout, "Debug: call dlsym \n");
             return gladGetProcAddressPtr != NULL;
 #endif
         }
@@ -147,7 +145,6 @@ int open_gl(void) {
 
 static
 void close_gl(void) {
-    fprintf(stdout, "Debug: call close_gl %s \n", "abc");
     if(libGL != NULL) {
         dlclose(libGL);
         libGL = NULL;
@@ -158,8 +155,6 @@ void close_gl(void) {
 static
 void* get_proc(const char *namez) {
     void* result = NULL;
-    fprintf(stdout, "Debug: get_proc %s \n", namez);
-
     if(libGL == NULL) return NULL;
 
 #if !defined(__APPLE__) && !defined(__HAIKU__)
@@ -181,10 +176,8 @@ void* get_proc(const char *namez) {
 int gladLoadGL(void) {
     int status = 0;
 
-    fprintf(stdout, "Debug: status %d \n", status);
     if(open_gl()) {
         status = gladLoadGLLoader(&get_proc);
-        fprintf(stdout, "Debug: get_proc 0x%x \n", get_proc);
         close_gl();
     }
 
@@ -6744,7 +6737,6 @@ static void find_coreGL(void) {
     sscanf(version, "%d.%d", &major, &minor);
 #endif
 
-    fprintf(stdout, "Debug: major.minor = %d.%d \n", major, minor);
     GLVersion.major = major; GLVersion.minor = minor;
     max_loaded_major = major; max_loaded_minor = minor;
 	GLAD_GL_VERSION_1_0 = (major == 1 && minor >= 0) || major > 1;
@@ -6770,7 +6762,6 @@ static void find_coreGL(void) {
 		max_loaded_major = 4;
 		max_loaded_minor = 6;
 	}
-    fprintf(stdout, "Debug: version4.5 = %d, version4.6 = %d \n", GLAD_GL_VERSION_4_5, GLAD_GL_VERSION_4_6);
 }
 
 int gladLoadGLLoader(GLADloadproc load) {
@@ -6778,7 +6769,6 @@ int gladLoadGLLoader(GLADloadproc load) {
 	glGetString = (PFNGLGETSTRINGPROC)load("glGetString");
 	if(glGetString == NULL) return 0;
 	if(glGetString(GL_VERSION) == NULL) return 0;
-    fprintf(stdout, "Debug: glGetString = 0x%x \n", glGetString);
 	find_coreGL();
 	load_GL_VERSION_1_0(load);
 	load_GL_VERSION_1_1(load);

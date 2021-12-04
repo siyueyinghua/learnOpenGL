@@ -6,11 +6,12 @@
 void ffmpeg_encoder_set_frame_yuv_from_rgb(AVCodecContext *c, struct SwsContext *sws_context, uint8_t *rgb, AVFrame *frame) {
     const int in_linesize[1] = { 4 * c->width };
     sws_context = sws_getCachedContext(sws_context,
-            c->width, c->height, AV_PIX_FMT_RGB32,
+            c->width, c->height, AV_PIX_FMT_RGB32, // AV_PIX_FMT_RGB32: ARGB on big-endian, BGRA on little-endian
             c->width, c->height, AV_PIX_FMT_YUV420P,
             0, NULL, NULL, NULL);
     sws_scale(sws_context, (const uint8_t * const *)&rgb, in_linesize, 0,
             c->height, frame->data, frame->linesize);
+    //-- fprintf(stdout, " in_linesize = %d, frame->linesize = %d\n", frame->linesize);
 }
 
 void ffmpeg_encoder_start(AVCodecContext **c, FILE **file, const char *filename, AVFrame **frame, int codec_id, int fps, int width, int height) {
@@ -102,19 +103,20 @@ void ffmpeg_encoder_encode_frame(AVCodecContext *c, struct SwsContext *sws_conte
 }
 
 void ffmpeg_encoder_glread_rgb(uint8_t **rgb, GLubyte **pixels, unsigned int width, unsigned int height) {
-    size_t i, j, k, cur_gl, cur_rgb, nvals;
+    size_t i, j, k, cur_gl, cur_rgb = 0, nvals;
     const size_t format_nchannels = 4;
     nvals = format_nchannels * width * height;
     *pixels = realloc(*pixels, nvals * sizeof(GLubyte));
     *rgb = realloc(*rgb, nvals * sizeof(uint8_t));
-    /* Get RGBA to align to 32 bits instead of just 24 for RGB. May be faster for FFmpeg. */
+    /* Get RGBA for AV_PIX_FMT_RGB32: ARGB on big-endian, BGRA on little-endian, intel is little-endian. */
     glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, *pixels);
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
             cur_gl  = format_nchannels * (width * (height - i - 1) + j);
             cur_rgb = format_nchannels * (width * i + j);
-            for (k = 0; k < format_nchannels; k++)
-                (*rgb)[cur_rgb + k] = (*pixels)[cur_gl + k];
+            for (k = 0; k < format_nchannels-1; k++)
+                (*rgb)[cur_rgb + k] = (*pixels)[cur_gl + format_nchannels - 2 - k];
+            (*rgb)[cur_rgb + k] = (*pixels)[cur_gl + k]/10;
         }
     }
 }

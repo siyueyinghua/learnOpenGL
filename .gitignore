@@ -7,6 +7,8 @@
 .idea
 .zip
 .gz
+*.mp4
+*.png
 build/
 lib/
 resources/objects

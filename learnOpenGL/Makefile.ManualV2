@@ -62,200 +62,192 @@ TARGET13 := depth_testing
 TGT_ALL += $(TARGET13).out
 TARGET14 := framebuffers
 TGT_ALL += $(TARGET14).out
-TARGET15 := framebuffers_demo
+TARGET15 := framebuffers_demo_v1
 TGT_ALL += $(TARGET15).out
-TARGET16 := framebuffers_demo_v1
+TARGET16 := hello_triangle
 TGT_ALL += $(TARGET16).out
-TARGET17 := hello_triangle
+TARGET17 := hello_triangle_indexed_for_demo
 TGT_ALL += $(TARGET17).out
-TARGET18 := hello_triangle_indexed
+TARGET18 := hello_window_clear
 TGT_ALL += $(TARGET18).out
-TARGET19 := hello_triangle_indexed_for_demo
+TARGET19 := instancing_quads
 TGT_ALL += $(TARGET19).out
-TARGET20 := hello_window_clear
+TARGET20 := light_casters_directional
 TGT_ALL += $(TARGET20).out
-TARGET21 := instancing_quads
+TARGET21 := light_casters_point
 TGT_ALL += $(TARGET21).out
-TARGET22 := light_casters_directional
+TARGET22 := light_casters_spot
 TGT_ALL += $(TARGET22).out
-TARGET23 := light_casters_point
+TARGET23 := light_casters_spot_soft
 TGT_ALL += $(TARGET23).out
-TARGET24 := light_casters_spot
+TARGET24 := lighting_maps_diffuse
 TGT_ALL += $(TARGET24).out
-TARGET25 := light_casters_spot_soft
+TARGET25 := lighting_maps_specular
 TGT_ALL += $(TARGET25).out
-TARGET26 := lighting_maps_diffuse
+TARGET26 := materials_for_demo
 TGT_ALL += $(TARGET26).out
-TARGET27 := lighting_maps_specular
+TARGET27 := model_loading
 TGT_ALL += $(TARGET27).out
-TARGET28 := materials
+TARGET28 := model_loading_fox
 TGT_ALL += $(TARGET28).out
-TARGET29 := materials_for_demo
+TARGET29 := model_loading_light
 TGT_ALL += $(TARGET29).out
-TARGET30 := model_loading
+TARGET30 := model_loading_multi_light
 TGT_ALL += $(TARGET30).out
-TARGET31 := model_loading_fox
+TARGET31 := model_loading_multi_light_normal_ChryslerImperial
 TGT_ALL += $(TARGET31).out
-TARGET32 := model_loading_light
+TARGET32 := model_loading_multi_light_normal
 TGT_ALL += $(TARGET32).out
-TARGET33 := model_loading_multi_light
+TARGET33 := model_loading_multi_light_normal_for_demo
 TGT_ALL += $(TARGET33).out
-TARGET34 := model_loading_multi_light_normal_ChryslerImperial
+TARGET34 := multiple_lights
 TGT_ALL += $(TARGET34).out
-TARGET35 := model_loading_multi_light_normal
+TARGET35 := multiple_lights_exercise1
 TGT_ALL += $(TARGET35).out
-TARGET36 := model_loading_multi_light_normal_for_demo
+TARGET36 := shaders_class
 TGT_ALL += $(TARGET36).out
-TARGET37 := model_loading_multi_light_normal_for_offscreen
+TARGET37 := shaders_interpolation
 TGT_ALL += $(TARGET37).out
-TARGET38 := multiple_lights
+TARGET38 := shaders_uniform
 TGT_ALL += $(TARGET38).out
-TARGET39 := multiple_lights_exercise1
+TARGET39 := tessellation_demo
 TGT_ALL += $(TARGET39).out
-TARGET40 := multiwin_mx
+TARGET40 := textures_combined
 TGT_ALL += $(TARGET40).out
-TARGET41 := shaders_class
+TARGET41 := textures
 TGT_ALL += $(TARGET41).out
-TARGET42 := shaders_interpolation
+TARGET42 := transformations
 TGT_ALL += $(TARGET42).out
-TARGET43 := shaders_uniform
+TARGET43 := multiwin_mx
 TGT_ALL += $(TARGET43).out
-TARGET44 := tessellation_demo
-TGT_ALL += $(TARGET44).out
-TARGET45 := textures_combined
-TGT_ALL += $(TARGET45).out
-TARGET46 := textures
-TGT_ALL += $(TARGET46).out
-TARGET47 := transformations
-TGT_ALL += $(TARGET47).out
 TARGET := transformations
 
 # link
-$(TARGET1).out: $(TARGET1).o glad.o ffmpeg_encode.o
+$(TARGET1).out: $(TARGET1).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET2).out: $(TARGET2).o glad.o ffmpeg_encode.o
+$(TARGET2).out: $(TARGET2).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET3).out: $(TARGET3).o glad.o ffmpeg_encode.o
+$(TARGET3).out: $(TARGET3).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET4).out: $(TARGET4).o glad.o ffmpeg_encode.o
+$(TARGET4).out: $(TARGET4).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET5).out: $(TARGET5).o glad.o ffmpeg_encode.o
+$(TARGET5).out: $(TARGET5).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET6).out: $(TARGET6).o glad.o ffmpeg_encode.o
+$(TARGET6).out: $(TARGET6).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET7).out: $(TARGET7).o glad.o ffmpeg_encode.o
+$(TARGET7).out: $(TARGET7).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET8).out: $(TARGET8).o glad.o ffmpeg_encode.o
+$(TARGET8).out: $(TARGET8).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET9).out: $(TARGET9).o glad.o ffmpeg_encode.o
+$(TARGET9).out: $(TARGET9).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET10).out: $(TARGET10).o glad.o ffmpeg_encode.o
+$(TARGET10).out: $(TARGET10).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET11).out: $(TARGET11).o glad.o ffmpeg_encode.o
+$(TARGET11).out: $(TARGET11).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET12).out: $(TARGET12).o glad.o ffmpeg_encode.o
+$(TARGET12).out: $(TARGET12).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET13).out: $(TARGET13).o glad.o ffmpeg_encode.o
+$(TARGET13).out: $(TARGET13).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET14).out: $(TARGET14).o glad.o ffmpeg_encode.o
+$(TARGET14).out: $(TARGET14).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
 $(TARGET15).out: $(TARGET15).o glad.o ffmpeg_encode.o
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+	./$@
+
+$(TARGET16).out: $(TARGET16).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET16).out: $(TARGET16).o glad.o ffmpeg_encode.o
+$(TARGET17).out: $(TARGET17).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET17).out: $(TARGET17).o glad.o ffmpeg_encode.o
+$(TARGET18).out: $(TARGET18).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET18).out: $(TARGET18).o glad.o ffmpeg_encode.o
+$(TARGET19).out: $(TARGET19).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET19).out: $(TARGET19).o glad.o ffmpeg_encode.o
+$(TARGET20).out: $(TARGET20).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET20).out: $(TARGET20).o glad.o ffmpeg_encode.o
+$(TARGET21).out: $(TARGET21).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET21).out: $(TARGET21).o glad.o ffmpeg_encode.o
+$(TARGET22).out: $(TARGET22).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET22).out: $(TARGET22).o glad.o ffmpeg_encode.o
+$(TARGET23).out: $(TARGET23).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET23).out: $(TARGET23).o glad.o ffmpeg_encode.o
+$(TARGET24).out: $(TARGET24).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET24).out: $(TARGET24).o glad.o ffmpeg_encode.o
+$(TARGET25).out: $(TARGET25).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET25).out: $(TARGET25).o glad.o ffmpeg_encode.o
+$(TARGET26).out: $(TARGET26).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET26).out: $(TARGET26).o glad.o ffmpeg_encode.o
+$(TARGET27).out: $(TARGET27).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET27).out: $(TARGET27).o glad.o ffmpeg_encode.o
+$(TARGET28).out: $(TARGET28).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET28).out: $(TARGET28).o glad.o ffmpeg_encode.o
+$(TARGET29).out: $(TARGET29).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET29).out: $(TARGET29).o glad.o ffmpeg_encode.o
+$(TARGET30).out: $(TARGET30).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET30).out: $(TARGET30).o glad.o ffmpeg_encode.o
+$(TARGET31).out: $(TARGET31).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET31).out: $(TARGET31).o glad.o ffmpeg_encode.o
-	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
-	./$@
-
-$(TARGET32).out: $(TARGET32).o glad.o ffmpeg_encode.o
+$(TARGET32).out: $(TARGET32).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
@@ -263,59 +255,43 @@ $(TARGET33).out: $(TARGET33).o glad.o ffmpeg_encode.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET34).out: $(TARGET34).o glad.o ffmpeg_encode.o
+$(TARGET34).out: $(TARGET34).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET35).out: $(TARGET35).o glad.o ffmpeg_encode.o
+$(TARGET35).out: $(TARGET35).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET36).out: $(TARGET36).o glad.o ffmpeg_encode.o
+$(TARGET36).out: $(TARGET36).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET37).out: $(TARGET37).o glad.o ffmpeg_encode.o
+$(TARGET37).out: $(TARGET37).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET38).out: $(TARGET38).o glad.o ffmpeg_encode.o
+$(TARGET38).out: $(TARGET38).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET39).out: $(TARGET39).o glad.o ffmpeg_encode.o
+$(TARGET39).out: $(TARGET39).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET40).out: $(TARGET40).o glad.o ffmpeg_encode.o
+$(TARGET40).out: $(TARGET40).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET41).out: $(TARGET41).o glad.o ffmpeg_encode.o
+$(TARGET41).out: $(TARGET41).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET42).out: $(TARGET42).o glad.o ffmpeg_encode.o
+$(TARGET42).out: $(TARGET42).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
-$(TARGET43).out: $(TARGET43).o glad.o ffmpeg_encode.o
-	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
-	./$@
-
-$(TARGET44).out: $(TARGET44).o glad.o ffmpeg_encode.o
-	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
-	./$@
-
-$(TARGET45).out: $(TARGET45).o glad.o ffmpeg_encode.o
-	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
-	./$@
-
-$(TARGET46).out: $(TARGET46).o glad.o ffmpeg_encode.o
-	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
-	./$@
-
-$(TARGET47).out: $(TARGET47).o glad.o ffmpeg_encode.o
+$(TARGET43).out: $(TARGET43).o glad.o
 	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 

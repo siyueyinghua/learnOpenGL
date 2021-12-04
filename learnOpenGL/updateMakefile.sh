@@ -9,18 +9,34 @@ vpath %.cpp ./src:../thirdParty/src
 vpath %.h ./inc:../thirdParty/inc
 
 # compile and link parameter
-CC := gcc
-CXX := g++
-CFLAGS :=
+#-- CC := gcc
+#-- CXX := g++
+CC := clang
+CXX := clang++
+
+# use pkg-config for getting CFLAGS and LDLIBS
+FFMPEG_LIBS=    libavdevice                        \
+                libavformat                        \
+                libavfilter                        \
+                libavcodec                         \
+                libswresample                      \
+                libswscale                         \
+                libavutil                          \
+
+CFLAGS := -std=c11
 CXXFLAGS:= -std=c++17
 LDFLAGS := -lglfw3 -lassimp -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lXxf86vm -lXinerama -lXcursor
-#LIBS := ../thirdParty/lib/libglfw3.a ../thirdParty/lib/libassimp.so
-LIBS :=
 DEFINES :=
 INCLUDE := -I./inc -I../thirdParty/inc
 INC = -I./inc -I../thirdParty/inc
 INCLUDE_DIRS = -I./inc -I../thirdParty/inc
 DEPS = glad.h glfw3.h glfw3native.h
+
+CFLAGS += -Wall -g -fPIE -I../thirdParty/inc
+CFLAGS := $(shell pkg-config --cflags $(FFMPEG_LIBS)) $(CFLAGS)
+CXXFLAGS += -Wall -g
+CXXFLAGS := $(shell pkg-config --cflags $(FFMPEG_LIBS)) $(CXXFLAGS)
+LDLIBS := $(shell pkg-config --libs $(FFMPEG_LIBS)) $(LDLIBS)
 
 # target
 EOF
@@ -50,8 +66,8 @@ for TGT in ${TGT_arr[@]}
 do
 
     cat << EOF >> "${make_file}"
-\$(${TGT}).out: \$(${TGT}).o glad.o
-	\$(CXX) -o \$@ \$^ \$(LIBS) \$(LDFLAGS)
+\$(${TGT}).out: \$(${TGT}).o glad.o ffmpeg_encode.o
+	\$(CXX) -o \$@ \$^ \$(LDLIBS) \$(LDFLAGS)
 	./\$@
 
 EOF
@@ -63,7 +79,7 @@ all: $(TGT_ALL)
 	@echo "$^"
 
 %.out: %.o glad.o
-	$(CXX) -o $@ $^ $(LIBS) $(LDFLAGS)
+	$(CXX) -o $@ $^ $(LDLIBS) $(LDFLAGS)
 	./$@
 
 # compile
@@ -71,7 +87,7 @@ all: $(TGT_ALL)
 	$(CXX) -o $@ -c $<  $(CXXFLAGS) $(INC)
 
 %.o: %.c
-	$(CXX) -o $@ -c $<  $(CXXFLAGS) $(INC)
+	$(CC) -o $@ -c $<  $(CFLAGS) $(INC)
 
 # run out
 .PHONY: run
