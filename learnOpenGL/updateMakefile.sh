@@ -1,6 +1,6 @@
 #!/bin/bash
 
-make_file="Makefile"
+make_file="Makefile.Auto"
 
 cat << 'EOF' > "${make_file}"
 # make path, dir item separate by ":"
